@@ -7,6 +7,7 @@
   "repository": "https://github.com/erksch/react-native-wheely",
   "author": "erksch (Erik Ziegler)",
   "license": "MIT",
+  "source": "src/index",
   "keywords": [
     "react",
     "react-native",
@@ -19,6 +20,7 @@
     "lib/**/*"
   ],
   "scripts": {
+    "example": "yarn --cwd example",
     "build": "tsc --skipLibCheck",
     "lint": "eslint ./src --ext .js,.ts,.tsx",
     "prepare": "yarn build"
@@ -33,8 +35,12 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-react-native": "^4.0.0",
     "prettier": "^2.6.0",
-    "react": "^17.0.2",
-    "react-native": "^0.67.3",
+    "react": "18.1.0",
+    "react-native": "0.71.8",
     "typescript": "^4.6.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
   }
 }

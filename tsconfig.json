@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "react-native-wheely": ["./src/index"]
+    },
     "target": "es6",
     "module": "commonjs",
     "esModuleInterop": true,
@@ -9,5 +13,6 @@
     "outDir": "./lib",
     "declaration": true
   },
+  "exclude": ["example"],
   "include": ["./src/**/*"]
 }
