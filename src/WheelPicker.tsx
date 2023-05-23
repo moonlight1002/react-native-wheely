@@ -14,9 +14,11 @@ import {
 import styles from './WheelPicker.styles';
 import WheelPickerItem from './WheelPickerItem';
 
+type optionsType = string[] | null[] | { label: string; value: string }[];
+
 interface Props {
   selectedIndex: number;
-  options: string[];
+  options: optionsType;
   onChange: (index: number) => void;
   selectedIndicatorStyle?: StyleProp<ViewStyle>;
   itemTextStyle?: TextStyle;
@@ -54,7 +56,7 @@ const WheelPicker: React.FC<Props> = ({
 
   const containerHeight = (1 + visibleRest * 2) * itemHeight;
   const paddedOptions = useMemo(() => {
-    const array: (string | null)[] = [...options];
+    const array: optionsType | any[] = [...options];
     for (let i = 0; i < visibleRest; i++) {
       array.unshift(null);
       array.push(null);

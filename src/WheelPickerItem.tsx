@@ -5,7 +5,7 @@ import styles from './WheelPicker.styles';
 interface ItemProps {
   textStyle: StyleProp<TextStyle>;
   style: StyleProp<ViewStyle>;
-  option: string | null;
+  option: string | { label: string; value: string } | any;
   height: number;
   index: number;
   currentScrollIndex: Animated.AnimatedAddition;
@@ -25,7 +25,7 @@ const WheelPickerItem: React.FC<ItemProps> = ({
   currentScrollIndex,
   opacityFunction,
   rotationFunction,
-  scaleFunction
+  scaleFunction,
 }) => {
   const relativeScrollIndex = Animated.subtract(index, currentScrollIndex);
 
@@ -113,15 +113,22 @@ const WheelPickerItem: React.FC<ItemProps> = ({
     })(),
   });
 
+  const text =
+    typeof option === 'object' && option !== null ? option?.label : option;
+
   return (
     <Animated.View
       style={[
         styles.option,
         style,
-        {  height, opacity, transform: [{ translateY }, { rotateX }, { scale }]},
+        {
+          height,
+          opacity,
+          transform: [{ translateY }, { rotateX }, { scale }],
+        },
       ]}
     >
-      <Text style={textStyle}>{option}</Text>
+      <Text style={textStyle}>{text}</Text>
     </Animated.View>
   );
 };
